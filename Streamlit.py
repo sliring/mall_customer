@@ -51,22 +51,22 @@ clust = st.sidebar.slider(" Pilih Jumlah Cluster : ", 2, 10, 3, 1) #range 2-10, 
 # fungsi/tahapan clustering nya
 def k_means(n_clust):
     kmean = KMeans(n_clusters=n_clust).fit(X)
-    X['Hasil_CLuster'] = kmean.labels_
+    X['Labels'] = kmean.labels_
 
-    # plt.figure(figsize=(10,8))
-    # sns.scatterplot(X['Income'], X['Score'], hue=X['Labels'], markers=True, size=X['Labels'], palette=sns.color_palette('hls', n_clust))
+    plt.figure(figsize=(10,8))
+    sns.scatterplot(x=X['Income'], y=X['Score'], hue=X['Labels'], markers=True, size=X['Labels'], palette=sns.color_palette('hls', n_clust))
 
-    # for label in X['Labels']:
-    #     plt.annotate(label,
-    #         (X[X['Labels']==label]['Income'].mean(),
-    #         X[X['Labels']==label]['Score'].mean()),
-    #         horizontalalignment = 'center',
-    #         verticalalignment = 'center',
-    #         size = 20, weight='bold',
-    #         color ='black')
+    for label in X['Labels']:
+        plt.annotate(label,
+            (X[X['Labels']==label]['Income'].mean(),
+            X[X['Labels']==label]['Score'].mean()),
+            horizontalalignment = 'center',
+            verticalalignment = 'center',
+            size = 20, weight='bold',
+            color ='black')
     
-    # st.header('cluster plot')
-    # st.pyplot()
+    st.header('cluster plot')
+    st.pyplot()
 
     st.header('cluster berdasarkan table')
     st.write(X)
