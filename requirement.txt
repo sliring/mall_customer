@@ -1,8 +1,0 @@
-Library Library yang digunakan
- 
->> numpy
->> pandas
->> scikit-learn
->> streamlit
->> matplotlip
->> seaborn
